@@ -1,0 +1,52 @@
+services:
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: musicstore
+      POSTGRES_USER: musicuser
+      POSTGRES_PASSWORD: musicpass123
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U musicuser -d musicstore"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: ./backend
+    ports:
+      - "4000:4000"
+    environment:
+  DATABASE_URL: postgresql://user:password@db:5432/musicstore
+  JWT_SECRET: your_jwt_secret_here
+  PORT: 4000
+
+  STRIPE_SECRET_KEY: your_stripe_secret_key_here
+  STRIPE_PUBLISHABLE_KEY: your_stripe_publishable_key_here
+
+  RESEND_API_KEY: your_resend_api_key_here
+  FROM_EMAIL: onboarding@resend.dev
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    environment:
+      REACT_APP_API_URL: http://localhost:4000
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+
+volumes:
+  postgres_data:
