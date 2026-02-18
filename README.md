@@ -1,4 +1,4 @@
-# 🎵 WAXROOM — Music Ecommerce Store
+# 🎵 WAXROOM — Music Ecommerce Website
 
 A full-stack music album store with real payments and order confirmation emails. Built with React, Node.js, PostgreSQL, Stripe, and Resend — fully containerized with Docker.
 
