@@ -175,7 +175,3 @@ waxroom/
 3. **Deploy** — Suggested stack: backend on [Railway](https://railway.app), frontend on [Vercel](https://vercel.com), database on [Supabase](https://supabase.com)
 
 ---
-
-## License
-
-MIT
