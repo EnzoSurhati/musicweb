@@ -40,7 +40,7 @@ export default function Footer() {
         </div>
         <div style={{ borderTop: '1px solid var(--border)', paddingTop: 24, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
           <span style={{ fontSize: 12, color: 'var(--text3)', fontFamily: 'Space Mono' }}>
-            © 2024 WAXROOM. All rights reserved.
+            © 2026 WAXROOM. All rights reserved.
           </span>
           <span style={{ fontSize: 12, color: 'var(--text3)', fontFamily: 'Space Mono' }}>
             Built with React + Node.js + PostgreSQL
